@@ -5,8 +5,8 @@ import re
 from setuptools import find_packages, setup
 
 NAME = "flat_in_xeff_prior"
-PACKAGES = find_packages(where="flat_in_xeff_prior")
-META_PATH = os.path.join("flat_in_xeff_prior", "__init__.py")
+PACKAGES = find_packages(where="src")
+META_PATH = os.path.join( "src", "flat_in_xeff_prior", "__init__.py")
 INSTALL_REQUIRES = ["numpy", "matplotlib"]
 EXTRA_REQUIRE = {"test": ["pytest>=3.6"]}
 EXTRA_REQUIRE["dev"] = EXTRA_REQUIRE["test"] + [
@@ -45,22 +45,24 @@ def find_meta(meta, meta_file=read(META_PATH)):
     raise RuntimeError("Unable to find __{meta}__ string.".format(meta=meta))
 
 
+__author__ = "Avi Vajpeyi"
+__email__ = "avi.vajpeyi@gmail.com"
+
+
 setup(
     name=NAME,
-    use_scm_version={
-        "write_to": os.path.join(NAME, "{0}_version.py".format(NAME)),
-        "write_to_template": '__version__ = "{version}"\n',
-    },
-    author=find_meta("author"),
-    author_email=find_meta("email"),
-    maintainer=find_meta("author"),
-    maintainer_email=find_meta("email"),
-    url=find_meta("uri"),
-    license=find_meta("license"),
-    description=find_meta("description"),
+    version="1.0.0",
+    author=__author__,
+    author_email=__email__,
+    maintainer=__author__,
+    maintainer_email=__email__,
+    url="https://github.com/avivajpeyi/flat_in_xeff_prior",
+    license="MIT",
+    description="Flat in xeff prior in bilby",
     long_description=read("README.md"),
     long_description_content_type="text/markdown",
     packages=PACKAGES,
+    package_dir={"": "src"},
     keywords=[],
     install_requires=INSTALL_REQUIRES,
     extras_require=EXTRA_REQUIRE,

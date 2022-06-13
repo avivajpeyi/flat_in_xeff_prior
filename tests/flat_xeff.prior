@@ -6,11 +6,11 @@ mass_2 = Constraint(minimum=3.022, maximum=54.398, name='mass_2', latex_label='$
 
 # 6 spin parameters
 xeff = Uniform(minimum=-1, maximum=1)
-newxdiff = Uniform(minimum=0, maximum=1)
+cxd = Uniform(minimum=0, maximum=1)
 phi1 = Uniform(0, 2 * np.pi)
 phi2 = Uniform(0, 2 * np.pi)
-r1 = ConditionalPowerLaw(condition_func=deep_gw_pe_followup.flat_xeff_prior.condition_func_r1, alpha=1, minimum=0, maximum=1),
-r2 = ConditionalPowerLaw(condition_func=deep_gw_pe_followup.flat_xeff_prior.condition_func_r2, alpha=1, minimum=0, maximum=1),
+r1 = flat_in_xeff_prior.ConditionalR1(minimum=0, maximum=1)
+r2 = flat_in_xeff_prior.ConditionalR2(minimum=0, maximum=1)
 
 
 # other paramters
